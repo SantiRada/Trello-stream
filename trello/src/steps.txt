@@ -1,0 +1,18 @@
+----------------------------------------
+- [x] Crear columnas
+- [x] Editar nombre de columna
+- [x] Eliminar columna
+----------------------------------------
+- [] Crear tareas
+- [] Editar nombre de la tarea
+- [] Eliminar tarea
+- [] Marcar como completada/pendiente
+----------------------------------------
+- [] Cargar información
+- [] Crear/Editar Portada
+- [] Crear/Editar/Eliminar Tags
+- [] Crear/Editar Descipción
+- [] Editar columna padre
+----------------------------------------
+- [] Drag and Drop
+----------------------------------------

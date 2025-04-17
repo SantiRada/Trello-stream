@@ -1,0 +1,53 @@
+:root{
+  --bg-1: #48232a;
+  --bg-2: #7C444F;
+  --bg-3: color-mix(in srgb, #7C444F, #fff 15%);
+
+  --input: #9F5255;
+  --button: #E16A54;
+
+  --line: #F39E60;
+
+  --text: #f5eae1;
+
+  --size: 250px;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Space Grotesk', sans-serif;
+}
+body{
+  background-color: var(--bg-1);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 12px;
+}
+img { width: 100%; }
+input, textarea, select { background-color: var(--input); }
+button { background-color: var(--button); }
+/* ------------------------- */
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.min-distance {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+/* ------------------------- */
+.editable-input {
+  width: 100%;
+  padding: .25rem .5rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--text);
+  color: var(--input);
+}
+.editable-input:focus, textarea:focus { outline: 0px; }
+.editable-input::placeholder, textarea::placeholder { color: #ffffff70; }

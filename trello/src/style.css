@@ -1,0 +1,218 @@
+#table{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
+    overflow-x: auto;
+}
+/* ---- COLUMNS ---- */
+.column{
+    min-width: var(--size);
+    max-width: var(--size);
+    width: var(--size);
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: var(--bg-2);
+}
+.column .icon{
+    transition: all .2s ease-in;
+    cursor: pointer;
+    opacity: 0;
+}
+.column:hover .icon{
+    opacity: 1;
+}
+.column h2 { font-size: .9rem; }
+.column .title.between { margin-bottom: .5rem; }
+.create-column{
+    width: var(--size);
+    min-width: var(--size);
+    max-width: var(--size);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background-color: var(--bg-3);
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s ease-in;
+
+    &:hover{
+        background-color: var(--bg-2);
+    }
+}
+.list-task{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+/* ---- TASK ---- */
+.task{
+    padding: .5rem .75rem;
+    background-color: var(--bg-1);
+    border-radius: 8px;
+    font-size: .85rem;
+}
+.task .min-distance { position: relative; }
+.task .title { transition: all .2s ease-in; }
+.task:hover .title, .task .title.selected { margin-left: 1.1rem; }
+.toggle{
+    position: absolute;
+    top: 50%;
+    left: 0x;
+    transform: translateY(-50%);
+    border: 2px solid var(--line);
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    opacity: 0;
+    transition: all .2s ease-in;
+}
+.task:hover .toggle, .task .toggle.select { opacity: 1; }
+.toggle.select::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 100%;
+    background-color: var(--line);
+    width: 6px;
+    height: 6px;
+}
+.element {
+    opacity: 0;
+    transition: all .2s ease-in;
+}
+.task:hover .element { opacity: 1; }
+/* ---- CREATE.TASK ---- */
+.create-task {
+    padding: .5rem .75rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--bg-3);
+    color: var(--text);
+    cursor: pointer;
+    transition: all .2s ease-in;
+
+    &:hover{
+        background-color: color-mix(in srgb, var(--bg-3), #000 10%);
+    }
+}
+/* ---- MODAL.TASK ---- */
+.space-modal{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-task{
+    position: relative;
+    min-width: 600px;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: var(--bg-1);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding-top: 60px;
+    overflow: hidden;
+
+    &:focus { outline: 0px; }
+}
+.title-space{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.title-space .toggle{
+    position: relative;
+    transform: none;
+    opacity: 1;
+}
+.modal-title { font-size: 1.25rem; }
+/* ---- TAGS ---- */
+.tags, .desc { margin-top: 1rem; }
+.list-tags{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .5rem;
+    margin-top: .25rem;
+}
+/* ---- CREATE.TAGS ---- */
+.btn-more{
+    padding: .5rem .75rem;
+    border-radius: 4px;
+    background-color: var(--bg-2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ---- DESCRIPTION ---- */
+.desc{
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+textarea{
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 100px;
+    max-height: 350px;
+}
+.thumb{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: var(--bg-1);
+    border-bottom: 2px solid var(--bg-2);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+}
+.btn-thumb{
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #00000090;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover { background-color: #00000070; }
+}
+/* ---- MODAL.THUMB ---- */
+.thumb-list{
+    width: 300px;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+}
+.color{
+    width: 50px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #ccc;
+    border: 3px solid #00000090;
+    cursor: pointer;
+}
