@@ -1,20 +1,21 @@
 import { useRef, useState, useEffect } from 'react';
 
 interface Props {
+    handleFunc : (title: string) => void;
     children: React.ReactNode;
     prevText?: string;
-    handleFunc : (title: string) => void;
+    rows?: number;
 }
 
-export function EditableInput ({children, prevText, handleFunc}: Props) {
+export function EditableInput ({children, rows, prevText, handleFunc}: Props) {
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
     const [creating, setCreating] = useState<boolean>(false);
     const [title, setTitle] = useState<string>(prevText ? prevText : '');
 
     const handleBlur = () => setCreating(false);
-    const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         if (e.key === 'Enter' || e.key === 'Return') {
             handleFunc(title);
 
@@ -30,16 +31,26 @@ export function EditableInput ({children, prevText, handleFunc}: Props) {
     return(
         <div className="sector-editable">
             { creating ? 
-            <input
-                type="text"
-                placeholder="Titulo de la lista"
-                ref={inputRef}
-                className="editable-input"
-                onChange={(e) => setTitle(e.target.value)}
-                onBlur={handleBlur}
-                onKeyDown={handleKeyDown}
-                value={title}
-            /> : <a onClick={ () => setCreating(true) }>{children}</a>
+            rows ? 
+                <textarea
+                    placeholder="Titulo de la lista"
+                    ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+                    className="editable-input"
+                    onChange={(e) => setTitle(e.target.value)}
+                    onBlur={handleBlur}
+                    onKeyDown={handleKeyDown}
+                >{title}</textarea> :
+                <input
+                    type="text"
+                    placeholder="Titulo de la lista"
+                    ref={inputRef as React.RefObject<HTMLInputElement>}
+                    className="editable-input"
+                    onChange={(e) => setTitle(e.target.value)}
+                    onBlur={handleBlur}
+                    onKeyDown={handleKeyDown}
+                    value={title}
+                />
+            : <a onClick={ () => setCreating(true) }>{children}</a>
             }
         </div>
     )

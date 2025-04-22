@@ -6,6 +6,8 @@ interface Props {
 
 export function Tag ({tag} : Props) {
     return (
-        <p key={tag.id}>{tag.title}</p>
+        <div key={tag.id} className="tag-item">
+            {tag.title}
+        </div>
     )
 }

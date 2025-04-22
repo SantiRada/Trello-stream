@@ -1,4 +1,5 @@
-import { type TaskType } from '../../types';
+import { type TaskType, type Colors } from '../../types';
+import { generateUUID } from '../../constants';
 
 import { useState } from 'react';
 
@@ -22,8 +23,20 @@ export function ModalTask ({data, onEditTask, closeModal}: Props) {
         onEditTask(data);
     }
 
-    const onEditTitle = (title: string) => {
-        data.title = title;
+    const onEdit = (content: (string | Colors), typeData : string) => {
+        switch (typeData) {
+            case "title": data.title = content; break;
+            case "desc": data.desc = content; break;
+            case "color": data.color = content as Colors; break;
+            case "tags":
+                if(data.tags?.find(tag => tag.title === content)) {
+                    data.tags = data.tags.filter(tag => tag.title !== content);
+                }else{
+                    data.tags = [ ...data.tags || [], { id: generateUUID(), title: content } ];
+                }
+                break;
+        }
+        
         onEditTask(data);
     }
 
@@ -32,13 +45,13 @@ export function ModalTask ({data, onEditTask, closeModal}: Props) {
     return(
         <div className="space-modal" onDoubleClick={closeModal}>
             <div className="modal-task" tabIndex={0}>
-                <div className="thumb">
-                    { editThumb && <ModalThumb /> }
+                <div className="thumb" style={{ backgroundColor: data.color }}>
+                    { editThumb && <ModalThumb onEdit={ (content : string) => onEdit(content, "color") } /> }
                     <a onClick={ () => setEditThumb(!editThumb) } className="btn-thumb">{editThumb ? <FaXmark /> : "Portada"}</a>
                 </div>
                 <div className="title-space">
                     <div onClick={toggleClic} className={data.completed ? "toggle select" : "toggle"}></div>
-                    <EditableInput handleFunc={onEditTitle}>
+                    <EditableInput handleFunc={ (title : string) => onEdit(title, "title") }>
                         <h1 className="modal-title">{data.title}</h1>
                     </EditableInput>
                 </div>
@@ -48,12 +61,14 @@ export function ModalTask ({data, onEditTask, closeModal}: Props) {
                         {data.tags?.map(tag => (
                             <Tag tag={tag} />
                         ))}
-                        <CreateTag />
+                        <CreateTag task={data} onEdit={ (tag : string) => onEdit(tag, "tags") } />
                     </div>
                 </div>
                 <div className="desc">
                     <label>Descripción</label>
-                    <textarea placeholder="Descripción">{data.desc? data.desc : ''}</textarea>
+                    <EditableInput prevText={data.desc} rows={6} handleFunc={ (desc : string) => onEdit(desc, "desc") }>
+                        <h4 className="desc-title">{data.desc}</h4>
+                    </EditableInput>
                 </div>
             </div>
         </div>

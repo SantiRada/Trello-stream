@@ -10,9 +10,12 @@ export type TaskType = {
     completed: boolean;
     desc?: string;
     tags?: Tags[];
+    color?: Colors;
 }
 
 export type Tags = {
-    id: number;
+    id: string;
     title: string;
 }
+
+export type Colors = `#${string}`;

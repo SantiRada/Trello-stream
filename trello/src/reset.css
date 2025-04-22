@@ -1,12 +1,12 @@
 :root{
-  --bg-1: #48232a;
-  --bg-2: #7C444F;
-  --bg-3: color-mix(in srgb, #7C444F, #fff 15%);
+  --bg-1: #0d171c;
+  --bg-2: #2a3135;
+  --bg-3: color-mix(in srgb, #2a3135, #fff 15%);
 
-  --input: #9F5255;
-  --button: #E16A54;
+  --input: #383e41;
+  --button: #152731;
 
-  --line: #F39E60;
+  --line: #1d333e;
 
   --text: #f5eae1;
 

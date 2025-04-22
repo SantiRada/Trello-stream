@@ -28,7 +28,7 @@ export function Task ({data, onEditTask}: Props) {
 
     return(
         <>
-        <div key={data.id} className="task between" onDoubleClick={() => setOpenModal(true) }>
+        <div key={data.id} className="task between" onDoubleClick={() => setOpenModal(true) } style={{backgroundColor: data.color}}>
             <div className="min-distance">
                 <div onClick={toggleClic} className={data.completed ? "toggle select" : "toggle"}></div>
                 <EditableInput handleFunc={onEditTitle}>

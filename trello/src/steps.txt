@@ -1,18 +1,26 @@
-----------------------------------------
+----------------------------------------|----------------------------------------
 - [x] Crear columnas
 - [x] Editar nombre de columna
 - [x] Eliminar columna
-----------------------------------------
-- [] Crear tareas
-- [] Editar nombre de la tarea
+----------------------------------------|----------------------------------------
+- [x] Crear tareas
+- [x] Editar nombre de la tarea
+- [x] Marcar como completada/pendiente
+----------------------------------------|----------------------------------------
+- [x] Cargar información
+- [x] Crear/Editar Portada
+- [x] Crear/Editar Tags
+- [] Listar Tags
+- [] Eliminar Tags
+- [x] Crear/Editar Descripción
 - [] Eliminar tarea
-- [] Marcar como completada/pendiente
-----------------------------------------
-- [] Cargar información
-- [] Crear/Editar Portada
-- [] Crear/Editar/Eliminar Tags
-- [] Crear/Editar Descipción
 - [] Editar columna padre
-----------------------------------------
+----------------------------------------|----------------------------------------
+- [] Conexión con Firebase
+----------------------------------------|----------------------------------------
 - [] Drag and Drop
-----------------------------------------
+----------------------------------------|----------------------------------------
+
+----------------------------------------|----------------------------------------
+- [] Mejorar la distribución de contenido //// Separar columnas de tareas //// Separar Tags de Tareas ////
+----------------------------------------|----------------------------------------
